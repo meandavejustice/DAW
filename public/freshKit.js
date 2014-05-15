@@ -16,7 +16,6 @@ module.exports = [
   "Clap (8).wav",
   "Clap (9).wav",
   "Clap.wav",
-  "freshKit.js",
   "Kick (10).wav",
   "Kick (11).wav",
   "Kick (12).wav",

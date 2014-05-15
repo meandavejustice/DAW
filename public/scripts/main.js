@@ -6,7 +6,8 @@
 var bindKeys = require('./keybindings');
 var mpcInit = require('./mpc');
 var control = require('./control');
-var recorder = require('./record');
+// var recorder = require('./record');
+var visualizer = require('./visualizer');
 var wavesurfer = Object.create(WaveSurfer);
 var url = '/sounds/wizard.mp3';
 
@@ -15,14 +16,21 @@ wavesurfer.init({
   waveColor: '#02FFC2',
   progressColor: 'orange'
 });
-wavesurfer.on('ready', function() {control(wavesurfer);});
+
+wavesurfer.on('ready', function() {
+  control(wavesurfer);
+  visualizer.init(wavesurfer.WebAudio.audioContext);
+  visualizer.connectSource(wavesurfer.backend.source);
+  visualizer.start();
+});
+
 wavesurfer.load(url);
 
 window.addEventListener('WebComponentsReady', function(evt) {
   // pass audioContext throughout so we can do cool stuff with
   // it later.
-  mpcInit(wavesurfer.audioContext);
-  recorder.init(audioContext);
+  mpcInit(wavesurfer.WebAudio.audioContext);
+//  recorder.init(audioContext);
   bindKeys();
 
   document.querySelector('.state').textContent = 'READY!!';

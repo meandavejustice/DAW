@@ -9,7 +9,7 @@ var context;
 var gfx;
 var fft;
 
-gfx = canvas.getContext('2d');
+gfx = canvasEl.getContext('2d');
 
 // src should probably be a gainNode that has
 // all other sources connected to it.
@@ -25,7 +25,7 @@ function init(audioContext) {
   context = audioContext;
   fft = context.createAnalyser();
   fft.fftSize = samples;
-  fft.connect(ctx.destination);
+  fft.connect(context.destination);
 }
 
 function start() {
@@ -47,3 +47,6 @@ function update() {
   }
 }
 
+module.exports.init = init;
+module.exports.start = start;
+module.exports.connectSource = connectSource;
