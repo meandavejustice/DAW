@@ -1,0 +1,4 @@
+node_modules
+public/sounds
+public/vendor
+public/bundle.js

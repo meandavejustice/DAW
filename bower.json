@@ -1,0 +1,24 @@
+{
+  "name": "DAW",
+  "version": "0.0.0",
+  "authors": [
+    "David Adam Justice <david@outthinkgroup.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/vendor",
+    "public/sounds",
+    "public/sounds.zip",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "polymer": "Polymer/polymer#~0.2.4",
+    "wavesurfer.js": "~0.1.7",
+    "recorderjs": "mattdiamond/Recorderjs"
+  }
+}

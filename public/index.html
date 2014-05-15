@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendor/platform/platform.js"></script>
+    <link rel="import" href="elements/audio-pad.html" />
+
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" type="text/css" media="screen" />
+
+    <style type="text/css" media="screen">
+      #wave {
+      position: relative;
+      border: 2px solid #eee;
+      }
+      .mpc {
+      width: 720px;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="wave" width="600px" height="200px"></div>
+    <section class="control">
+       <button class="play btn btn-default">Play</button>
+       <button class="pause btn btn-default">Pause</button>
+       <button class="stop btn btn-default">Stop</button>
+       <button class="forward btn btn-default">Forward</button>
+       <button class="back btn btn-default">Back</button>
+       <input class="upload" type="file" accept="audio/*" />
+       <div class="record">
+         <div class="checkbox">
+           <label>
+             <input type="checkbox" name="mic" checked> Microphone
+           </label>
+         </div>
+         <div class="checkbox">
+           <label>
+             <input type="checkbox" name="mpc">MPC
+           </label>
+         </div>
+         <button class="btn btn-default">Record</button>
+       </div>
+       <div id="slider">
+         <span class="volValue">50</span>
+         <input type="range" class="volume" value="50"/>
+       </div>
+    </section>
+    <h4>Current State: <span class="state">Loading...</span></h4>
+
+    <section class="mpc">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#bank1" class="tablink tab1" data-toggle="tab">1</a></li>
+            <li><a href="#bank2" class="tablink tab2" data-toggle="tab">2</a></li>
+            <li><a href="#bank3" class="tablink tab3" data-toggle="tab">3</a></li>
+            <li><a href="#bank4" class="tablink tab4" data-toggle="tab">4</a></li>
+        </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="bank1">
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+        </div>
+        <div class="tab-pane" id="bank2">
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+        </div>
+        <div class="tab-pane" id="bank3">
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+        </div>
+        <div class="tab-pane" id="bank4">
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+          <audio-pad></audio-pad>
+        </div>
+      </div>
+    </section> <!-- end .mpc section -->
+    <script type="text/javascript" src="vendor/wavesurfer.js/build/wavesurfer.min.js"></script>
+    <script type="text/javascript" src="vendor/recorderjs/recorder.js"></script>
+    <script type="text/javascript" src="bundle.js"></script>
+  </body>
+</html>
