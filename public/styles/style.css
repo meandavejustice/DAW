@@ -14,7 +14,26 @@
 }
 
 .state {
-  display: inline;
+  display: block;
+  background: rgba(0, 0, 0, 0.65);
+  color: rgb(8, 255, 117);
+  position: absolute;
+  width: 165px;
+  top: 80px;
+  left: 35px;
+  font-family: monospace;
+}
+
+.state h4 {
+  color: rgba(0, 0, 0, 0.65);
+  background: rgb(8, 255, 117);
+  text-align: center;
+  margin-top: 0;
+  border: 1px solid;
+}
+
+.state li {
+  list-style: none;
 }
 
 .main {

@@ -19,9 +19,11 @@ wavesurfer.init({
 
 wavesurfer.on('ready', function() {
   control(wavesurfer);
-  visualizer.init(wavesurfer.WebAudio.audioContext);
-  visualizer.connectSource(wavesurfer.backend);
-  visualizer.start();
+  // this works but it's annoying on linux
+  // visualizer.init(wavesurfer.WebAudio.audioContext);
+  // visualizer.connectSource(wavesurfer.backend);
+  // visualizer.start();
+  // document.querySelector('.state .s_wave span').textContent = 'READY!!';
 });
 
 wavesurfer.load(url);
@@ -31,5 +33,5 @@ window.addEventListener('WebComponentsReady', function(evt) {
   // recorder.init(audioContext);
   bindKeys();
 
-  document.querySelector('.state span').textContent = 'READY!!';
+  document.querySelector('.state .s_mpc span').textContent = 'READY!!';
 });
