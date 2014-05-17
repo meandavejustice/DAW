@@ -9,7 +9,6 @@
  * - make prettier interface for controls.
  */
 
-
 var playEl = document.querySelector('.control .play');
 var pauseEl = document.querySelector('.control .pause');
 var stopEl = document.querySelector('.control .stop');

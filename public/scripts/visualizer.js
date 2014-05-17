@@ -1,7 +1,3 @@
-/*
- * ADD FFT VISUALIZER HERE!
- * - must hookup to ALL nodes!
- */
 var canvasEl = document.querySelector('#fft canvas');
 var setup = false;
 var samples = 128;
@@ -13,8 +9,8 @@ gfx = canvasEl.getContext('2d');
 
 // src should probably be a gainNode that has
 // all other sources connected to it.
-function connectSource(src) {
-  src.connect(fft);
+function connectSource(backend) {
+  backend.setFilter(fft);
   setup = true;
 }
 
@@ -24,8 +20,6 @@ function init(audioContext) {
   }
   context = audioContext;
   fft = context.createAnalyser();
-  fft.fftSize = samples;
-  fft.connect(context.destination);
 }
 
 function start() {
@@ -39,7 +33,7 @@ function update() {
   gfx.fillStyle = '#333';
   gfx.fillRect(0,0,800,600);  
 
-  var data = new Uint8Array(fft.frequencyBinCount);
+  var data = new Uint8Array(samples);
   fft.getByteFrequencyData(data);
   gfx.fillStyle = '#08FF6B';
   for(var i=0; i<data.length; i++) {
