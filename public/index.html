@@ -7,20 +7,11 @@
     <link rel="import" href="elements/audio-pad.html" />
 
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" type="text/css" media="screen" />
-
-    <style type="text/css" media="screen">
-      #wave {
-      position: relative;
-      border: 2px solid #eee;
-      }
-      .mpc {
-      width: 720px;
-     }
-    </style>
+    <link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
   </head>
   <body>
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
+    
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,136 +26,145 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#help">Help</a></li>
             <li><a href="#contact">Contact</a></li>
-            <!-- <li class="dropdown"> -->
-            <!--   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> -->
-            <!--   <ul class="dropdown-menu"> -->
-            <!--     <li><a href="#">Action</a></li> -->
-            <!--     <li><a href="#">Another action</a></li> -->
-            <!--     <li><a href="#">Something else here</a></li> -->
-            <!--     <li class="divider"></li> -->
-            <!--     <li class="dropdown-header">Nav header</li> -->
-            <!--     <li><a href="#">Separated link</a></li> -->
-            <!--     <li><a href="#">One more separated link</a></li> -->
-            <!--   </ul> -->
-            <!-- </li> -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="javascript:void(0)" class="js-mpc">Enable MPC</a></li>
+                <li><a href="javascript:void(0)" class="js-record">Show Recorder</a></li>
+                <li><a href="javascript:void(0)" class="js-record disabled">Equilizer</a></li>
+                <li><a href="javascript:void(0)" class="js-record disabled">Extreme Stretcher</a></li>
+              </ul>
+            </li>
           </ul>
+
+          <p class="state">State: <span>Loading...</span></p>
+
+          <div id="slider" class="pull-right">
+            <span class="volValue">50</span>
+            <input type="range" class="volume" value="50"/>
+          </div>
+
+          <section class="control pull-right">
+            <button class="play btn btn-default">Play</button>
+            <button class="pause btn btn-default">Pause</button>
+            <button class="stop btn btn-default">Stop</button>
+            <button class="forward btn btn-default">Forward</button>
+            <button class="back btn btn-default">Back</button>
+          </section>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-    <div class="container">
-    <div id="wave"></div>
-    <canvas id="fft" class="pull-right" width="225px" height="150px"></canvas>
-    <section class="control">
-       <button class="play btn btn-default">Play</button>
-       <button class="pause btn btn-default">Pause</button>
-       <button class="stop btn btn-default">Stop</button>
-       <button class="forward btn btn-default">Forward</button>
-       <button class="back btn btn-default">Back</button>
-       <input class="upload" type="file" accept="audio/*" />
-       <div class="record">
-         <div class="checkbox">
-           <label>
-             <input type="checkbox" name="mic" checked> Microphone
-           </label>
-         </div>
-         <div class="checkbox">
-           <label>
-             <input type="checkbox" name="mpc">MPC
-           </label>
-         </div>
-         <button class="btn btn-default">Record</button>
-       </div>
-       <div id="slider">
-         <span class="volValue">50</span>
-         <input type="range" class="volume" value="50"/>
-       </div>
-    </section>
-    <h4>Current State: <span class="state">Loading...</span></h4>
+    <div class="container main">
+      <section class="vis">
+        <div id="wave"></div>
+        <div id="fft" class="pull-right">
+          <canvas width="225px" height="130px"></canvas>
+        </div>
+      </section>
 
-    <section class="mpc">
+        <!-- <div class="record" style="display:none;"> -->
+        <!--   <div class="checkbox"> -->
+        <!--     <label> -->
+        <!--       <input type="checkbox" name="mic" checked> Microphone -->
+        <!--     </label> -->
+        <!--   </div> -->
+
+        <!--   <div class="checkbox"> -->
+        <!--     <label> -->
+        <!--       <input type="checkbox" name="mpc">MPC -->
+        <!--     </label> -->
+        <!--   </div> -->
+
+        <!--   <button class="btn btn-default">Record</button> -->
+        <!-- </div> -->
+
+        <!-- <input class="upload" type="file" accept="audio/*" /> -->
+
+      <section class="mpc">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#bank1" class="tablink tab1" data-toggle="tab">1</a></li>
-            <li><a href="#bank2" class="tablink tab2" data-toggle="tab">2</a></li>
-            <li><a href="#bank3" class="tablink tab3" data-toggle="tab">3</a></li>
-            <li><a href="#bank4" class="tablink tab4" data-toggle="tab">4</a></li>
+          <li class="active"><a href="#bank1" class="tablink tab1" data-toggle="tab">1</a></li>
+          <li><a href="#bank2" class="tablink tab2" data-toggle="tab">2</a></li>
+          <li><a href="#bank3" class="tablink tab3" data-toggle="tab">3</a></li>
+          <li><a href="#bank4" class="tablink tab4" data-toggle="tab">4</a></li>
         </ul>
 
-      <div class="tab-content">
-        <div class="tab-pane active" id="bank1">
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
+        <div class="tab-content">
+          <div class="tab-pane active" id="bank1">
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+          </div>
+          <div class="tab-pane" id="bank2">
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+          </div>
+          <div class="tab-pane" id="bank3">
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+          </div>
+          <div class="tab-pane" id="bank4">
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+            <audio-pad></audio-pad>
+          </div>
         </div>
-        <div class="tab-pane" id="bank2">
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-        </div>
-        <div class="tab-pane" id="bank3">
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-        </div>
-        <div class="tab-pane" id="bank4">
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-          <audio-pad></audio-pad>
-        </div>
-      </div>
     </section> <!-- end .mpc section -->
     <script type="text/javascript" src="vendor/wavesurfer.js/build/wavesurfer.min.js"></script>
     <script type="text/javascript" src="vendor/recorderjs/recorder.js"></script>

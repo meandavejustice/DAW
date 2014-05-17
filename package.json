@@ -6,9 +6,11 @@
   "scripts": {
     "postinstall": "npm run bower-deps && npm run unzip_samples && npm run bundle",
     "bower-deps": "bower install",
+    "watch-js": "watchify public/scripts/main.js -d -o public/bundle.js -v",
     "bundle": "browserify public/scripts/main.js -o public/bundle.js",
     "unzip_samples": "unzip public/sounds.zip -d public/",
     "start": "node server.js",
+    "start-dev": "npm run watch-js & nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "meandave",
@@ -18,5 +20,8 @@
     "hapi": "^4.1.2",
     "keyboardjs": "^0.4.2",
     "bower": "^1.3.3"
+  },
+  "devDependencies": {
+    "watchify": "^0.10.1"
   }
 }

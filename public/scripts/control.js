@@ -15,9 +15,9 @@ var pauseEl = document.querySelector('.control .pause');
 var stopEl = document.querySelector('.control .stop');
 var forwardEl = document.querySelector('.control .forward');
 var backEl = document.querySelector('.control .back');
-var volumeEl = document.querySelector('.control .volume');
-var volValue = document.querySelector('.control .volValue');
-var fileEl = document.querySelector('.control .upload');
+var volumeEl = document.querySelector('.volume');
+var volValue = document.querySelector('.volValue');
+// var fileEl = document.querySelector('.control .upload');
 
 module.exports = function(wave) {
   if (!wave) throw new Error('need to pass an instance of wavesurfer');
@@ -51,7 +51,7 @@ function addListeners(wave) {
     wave.setVolume(val*0.01);
   });
 
-  fileEl.addEventListener('change', function(ev) {
-    console.log(ev);
-  });
+  // fileEl.addEventListener('change', function(ev) {
+  //   console.log(ev);
+  // });
 }

@@ -33,5 +33,5 @@ window.addEventListener('WebComponentsReady', function(evt) {
 //  recorder.init(audioContext);
   bindKeys();
 
-  document.querySelector('.state').textContent = 'READY!!';
+  document.querySelector('.state span').textContent = 'READY!!';
 });
