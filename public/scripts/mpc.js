@@ -10,7 +10,7 @@
  */
 var pads = document.querySelectorAll('audio-pad');
 var basePath = 'sounds/';
-var freshKit = require('../sounds/freshKit.js');
+var freshKit = require('../freshKit.js');
 var context;
 
 function setPads(idx) {
